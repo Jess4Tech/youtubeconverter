@@ -1,9 +1,11 @@
+node_modules
+build
 dist
-.vscode
-venv
 public
+venv
+__pycache__
+.vscode
 *.spec
 *.pyc
 *.toc
-node_modules
 *.pyz
