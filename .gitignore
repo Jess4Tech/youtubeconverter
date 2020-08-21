@@ -2,4 +2,6 @@ node_modules/**/*
 dist/**/*
 .vscode/**/*
 venv/**/*
+public/**/*
 *.spec
+__pycache__/**/*

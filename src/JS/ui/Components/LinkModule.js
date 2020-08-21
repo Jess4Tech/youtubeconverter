@@ -1,6 +1,6 @@
 const React = require('react');
 const { remote } = window.require('electron')
-// const { spawn } = window.require('child_process')
+const { spawn } = window.require('child_process')
 
 import './LinkModule.css';
 
@@ -41,7 +41,10 @@ class LinkInput extends React.Component {
         else {
             this.setState({isPlaylist: false});
         }
-        // var download = spawn('yt-downloader', [])
+        var download = spawn('yt-downloader ' + this.state.UrlInput + ' ' + this.state.isPlaylist + ' ' + this.state.Output + ' ' + this.state.NameFormatting + ' ' + this.state.StartAt + ' ' + this.state.EndAt);
+        download.stdout.on('data', function(data) {
+            this.setState({CmdOutput: this.state.CmdOutput+data.toString()})
+        })
     }
 
     componentDidMount() {
@@ -123,6 +126,9 @@ class LinkInput extends React.Component {
                     <input type="submit" value="Convert" className="btn btn-success"/>
                     {this.state.error ? <p className="Text bg-danger"></p> : null}
                 </form>
+                <code value={this.state.CmdOutput}>
+                
+                </code>
             </div>
         )
     }
