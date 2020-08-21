@@ -1,0 +1,68 @@
+{
+  "name": "youtubeconverter",
+  "description": "Convert a youtube video or playlist into various formats",
+  "build": {
+    "appId": "io.github.jess4tech.youtubeconverter",
+    "productName": "YoutubeConverter",
+    "files": [
+      "public/**/*"
+    ],
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "snap": {
+      "synopsis": "Convert Youtube videos or playlists",
+      "category": "AudioVideo",
+      "artifactName": "Youtube Converter"
+    },
+    "linux": {
+      "target": "tar.gz",
+      "synopsis": "Convert Youtube videos or playlists",
+      "category": "AudioVideo",
+      "artifactName": "Youtube Converter"
+    }
+  },
+  "homepage": "./",
+  "version": "1.0.0",
+  "author": "Jess",
+  "license": "MIT",
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "debug-win": "build.win.bat",
+    "release-win": "build.win.bat p",
+    "debug-linux": "build.linux.sh",
+    "release-linux": "build.linux.sh p"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.2",
+    "fs": "0.0.1-security",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
+    "react": "^16.13.1",
+    "react-bootstrap": "^1.3.0",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.1",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "babel-loader": "^8.1.0",
+    "babel-minify": "^0.5.1",
+    "css-loader": "^4.2.1",
+    "electron": "^9.2.0",
+    "electron-builder": "^22.8.0",
+    "html-webpack-plugin": "^4.3.0",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}

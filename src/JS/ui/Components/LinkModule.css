@@ -1,0 +1,41 @@
+.LinkModuleDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 30vh;
+}
+
+.LinkModuleUrl {
+    height: 5vh;
+    width: 30vh;
+    font-size: small;
+    overflow: auto;
+    resize: none;
+}
+
+.LinkModuleOptions {
+    height: 2.5vh;
+    width: 15vw;
+}
+
+.Text {
+    font-size: 2.5vh;
+}
+
+.TextSmall {
+    font-size: 1.9vh;
+}
+
+.IndentRight {
+    padding-left: 2.75vw;
+}
+
+.Checkbox {
+    width: 2.25vw;
+    height: 2.25vh;
+}
+
+.Help {
+    width: 1.75vw;
+    height: 1.75vh;
+}
