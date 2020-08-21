@@ -2,13 +2,13 @@
 /build
 /dist
 /public
-/src/Python/venv
 /src/Python/win/dist
 /src/Python/win/build
 /src/Python/win/__pycache__
 /src/Python/linux/dist
 /src/Python/linux/build
 /src/Python/linux/__pycache__
+/src/Python/venv
 /.vscode
 *.spec
 *.pyc
