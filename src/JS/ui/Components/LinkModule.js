@@ -113,12 +113,12 @@ class LinkInput extends React.Component {
                         </label>
                         <br/>
                         <label className="font-weight-light TextSmall IndentRight">
-                            Start At <span title="Download from the playlist starting at the specified index. When both it and End are 0, it will download the entire playlist"><img className="Help" src="./images/help.png"/></span><br/>
+                            Start At <span title="Download from the playlist starting at the specified index. When it is 0, it will download the entire playlist"><img className="Help" src="./images/help.png"/></span><br/>
                             <input name="StartAt" min="0" value={this.state.StartAt} onChange={this.handleChange} type="number" className="LinkModuleOptions TextSmall font-weight-light"/>
                         </label>
                         <br/>
                         <label className="font-weight-light TextSmall IndentRight">
-                            End At<span title="Download from the playlist ending at the specified index. When both it and Start are 0, it will download the entire playlist End MUST be greater in value than Start."><img className="Help" src="./images/help.png"/></span><br/>
+                            End At<span title="Download from the playlist ending at the specified index. If start is 0, this will be disregarded. End MUST be greater in value than Start."><img className="Help" src="./images/help.png"/></span><br/>
                             <input name="EndAt" min={parseInt(this.state.StartAt)+1} value={this.state.EndAt} onChange={this.handleChange} type="number" className="LinkModuleOptions TextSmall font-weight-light"/>
                         </label> 
                     </div>

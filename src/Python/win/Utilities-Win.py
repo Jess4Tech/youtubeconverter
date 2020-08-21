@@ -8,7 +8,7 @@ def download(url, playlist, output, format, start, end):
             cmd+=" --yes-playlist \"{}\"".format(url)
         else:
             cmd+=" \"{}\"".format(url)
-        if int(end) != 0 and int(start) != 0:
+        if int(start) != 0:
             cmd+=" --playlist-start {}".format(start)
             cmd+=" --playlist-end {}".format(end)
         subprocess.call(cmd)
@@ -18,7 +18,7 @@ def download(url, playlist, output, format, start, end):
             cmd+= " --yes-playlist \"{}\"".format(url)
         else:
             cmd+="\"{}\"".format(url)
-        if int(end) != 0 and int(start) != 0:
+        if int(start) != 0:
             cmd+=" --playlist-start {}".format(start)
             cmd+=" --playlist-end {}".format(end)
         subprocess.call(cmd)

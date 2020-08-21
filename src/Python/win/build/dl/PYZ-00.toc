@@ -418,6 +418,6 @@
    'D:\\Python38\\lib\\multiprocessing\\__init__.py',
    'PYMODULE'),
   ('os', 'D:\\Python38\\lib\\os.py', 'PYMODULE'),
-  ('_py_abc', 'D:\\Python38\\lib\\_py_abc.py', 'PYMODULE'),
   ('stringprep', 'D:\\Python38\\lib\\stringprep.py', 'PYMODULE'),
+  ('_py_abc', 'D:\\Python38\\lib\\_py_abc.py', 'PYMODULE'),
   ('subprocess', 'D:\\Python38\\lib\\subprocess.py', 'PYMODULE')])

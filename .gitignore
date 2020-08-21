@@ -1,7 +1,9 @@
-node_modules/**/*
-dist/**/*
-.vscode/**/*
-venv/**/*
-public/**/*
+dist
+.vscode
+venv
+public
 *.spec
-__pycache__/**/*
+*.pyc
+*.toc
+node_modules
+*.pyz
