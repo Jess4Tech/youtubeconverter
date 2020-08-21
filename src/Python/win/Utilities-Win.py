@@ -1,9 +1,9 @@
 from sys import argv
 import subprocess    
 
-def download(url, playlist, output, format, start, end):
-    if output == "M4A" or output == "FLAC" or output == "MP3" or output == "WAV" or output == "WMA" or output == "AAC" or output == "OGG":
-        cmd = ".\\youtube-dl.exe --ignore-errors --format bestaudio --extract-audio --audio-format {} --audio-quality 160k --output \"{}\"".format(output.lower(), format)
+def download(url, playlist, outputFormat, outputDir, titleformat, start, end):
+    if outputFormat == "M4A" or outputFormat == "FLAC" or outputFormat == "MP3" or outputFormat == "WAV" or outputFormat == "WMA" or outputFormat == "AAC" or outputFormat == "OGG":
+        cmd = ".\\youtube-dl.exe --ignore-errors --format bestaudio --extract-audio --audio-format {} --audio-quality 160k --outputFormat \"{}\"".titleformat(outputFormat.lower(), f"{outputDir}\\{titleformat}")
         if playlist:
             cmd+=" --yes-playlist \"{}\"".format(url)
         else:
@@ -12,19 +12,18 @@ def download(url, playlist, output, format, start, end):
             cmd+=" --playlist-start {}".format(start)
             cmd+=" --playlist-end {}".format(end)
         subprocess.call(cmd)
-    if output == "AVCHD" or output == "AVI" or output == "FLV" or output == "MKV" or output == "MOV" or output == "MP4" or output == "WEBM" or output == "WMV":
-        cmd = ".\\youtube-dl.exe -i -f {}".format(output.lower())
+    if outputFormat == "AVCHD" or outputFormat == "AVI" or outputFormat == "FLV" or outputFormat == "MKV" or outputFormat == "MOV" or outputFormat == "MP4" or outputFormat == "WEBM" or outputFormat == "WMV":
+        cmd = ".\\youtube-dl.exe -i -f {}".format(outputFormat.lower())
         if playlist == "true" or playlist == "True" or playlist == True:
-            cmd+= " --yes-playlist \"{}\"".format(url)
+            cmd+=" --yes-playlist \"{}\"".format(url)
         else:
-            cmd+="\"{}\"".format(url)
+            cmd+="\"{}\"".titleformat(url)
         if int(start) != 0:
             cmd+=" --playlist-start {}".format(start)
             cmd+=" --playlist-end {}".format(end)
         subprocess.call(cmd)
 
-if len(argv) < 7:
-    print("\"Url, isPlaylist, Output, TitleFormat, Start, End\" is the order of the arguments")
-else: # Url, isPlaylist, Output, TitleFormat, Start, End
-    print(len(argv))
-    download(argv[1], argv[2], argv[3], argv[4], argv[5], argv[6])
+if len(argv) < 8:
+    print("\"Url, isPlaylist, outputFormat, outputFoFormatDir, TitleFormat, Start, End\" is the order of the arguments")
+else: # Url, isPlaylist, outputFormat, outputDir, TitleFormat, Start, End
+    download(argv[1], argv[2], argv[3], argv[4], argv[5], argv[6], argv[7])

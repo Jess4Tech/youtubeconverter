@@ -8,6 +8,8 @@ function createWindow() {
         width: 800,
         height: 600,
         show: false,
+        center: true,
+        resizeable: false,
         webPreferences: {
           nodeIntegration: true,
           enableRemoteModule: true
@@ -15,7 +17,6 @@ function createWindow() {
     });
     mainWindow.loadURL(`file://${path.join(__dirname, 'index.html')}`);
     mainWindow.removeMenu();
-    mainWindow.setResizable(false);
     mainWindow.openDevTools({mode: 'undocked'})
     mainWindow.on('ready-to-show', () => {
       mainWindow.show();

@@ -1,6 +1,3 @@
-rm -rf dist
-rm -rf public
-mkdir public
 if ["$1" == "p"]; then
     npx webpack -p
     npx minify ./src/JS/electron/electron.js -d ./public

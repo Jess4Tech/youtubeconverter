@@ -10,6 +10,8 @@ class LinkInput extends React.Component {
     constructor(props) {
         super (props);
         this.state= {
+            CmdOutput: '',
+            CmdState: '',
             UrlInput: '',
             Output: 'M4A',
             outputDir: remote.app.getPath('desktop')+"\\Youtube Converter Output",
@@ -17,7 +19,7 @@ class LinkInput extends React.Component {
             isPlaylist: false, 
             optionsOpen: false,
             StartAt: 0,
-            EndAt: 0
+            EndAt: 1
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -35,17 +37,22 @@ class LinkInput extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
-        if (this.state.UrlInput.includes("list")) {
-            this.setState({isPlaylist: true});
-        } 
-        else {
-            this.setState({isPlaylist: false});
+        if (this.state.UrlInput.includes("list")) this.setState({isPlaylist: true});
+        else this.setState({isPlaylist: false});
+        console.log('dl "' + this.state.UrlInput + '" ' + this.state.isPlaylist + ' ' + this.state.Output + ' "' + this.state.NameFormatting + '" ' + this.state.StartAt + ' ' + this.state.EndAt);
+        try {
+            var download = spawn('dl "' + this.state.UrlInput + '" ' + this.state.isPlaylist + ' ' + this.state.Output + ' "' + this.state.NameFormatting + '" ' + this.state.StartAt + ' ' + this.state.EndAt);
+            download.on('exit', (code) => {
+                var output = code === 0 ? "Success" : "Failure";
+                this.setState({CmdState: output})
+            })
+            download.stdout.on('data', (data) => {
+                this.setState({CmdOutput: this.state.CmdOutput + data})
+            })
+        } catch {
+            this.setState({CmdState: "Failure"})
         }
-        var download = spawn('yt-downloader ' + this.state.UrlInput + ' ' + this.state.isPlaylist + ' ' + this.state.Output + ' ' + this.state.NameFormatting + ' ' + this.state.StartAt + ' ' + this.state.EndAt);
-        download.stdout.on('data', function(data) {
-            this.setState({CmdOutput: this.state.CmdOutput+data.toString()})
-        })
-    }
+      }
 
     componentDidMount() {
         $("#optionsDiv").slideUp(0);
@@ -95,10 +102,6 @@ class LinkInput extends React.Component {
                         </select>
                     </label>
                     <br/>
-                    {/*<label className="font-weight-light Text">
-                        Playlist <input className="Checkbox" type="checkbox" name="isPlaylist" checked={this.state.isPlaylist} onChange={this.handleChange}/>
-                    </label>
-                    <br/>*/}
                     <button type="button" id="optionsButton" className="Options btn btn-light font-weight-light Text">Options</button>
                     <br/>
                     <div id="optionsDiv">
@@ -124,11 +127,10 @@ class LinkInput extends React.Component {
                     </div>
                     <br/>
                     <input type="submit" value="Convert" className="btn btn-success"/>
-                    {this.state.error ? <p className="Text bg-danger"></p> : null}
+                    <p className="Text bg-danger">{this.state.CmdState}</p>
+                    <code value={this.state.CmdOutput}></code>
                 </form>
-                <code value={this.state.CmdOutput}>
                 
-                </code>
             </div>
         )
     }

@@ -1,7 +1,3 @@
-@ECHO OFF
-
-del /F/Q/S dist
-del /F/Q/S public
 SET ProjectRoot=%cd%
 IF [%1] EQU [p] (
     echo Building Production
